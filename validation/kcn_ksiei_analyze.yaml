@@ -1,0 +1,18 @@
+schema_version: "M04.4"
+contract_id: "CON-KCN-KSIEI-ANALYZE-001"
+validation_state: "PENDING"
+
+checks:
+  canonical_capability: "PENDING"
+  provider_revision: "PENDING"
+  request_schema: "PENDING"
+  response_schema: "PENDING"
+  transport: "PENDING"
+  authentication: "PENDING"
+  provenance_propagation: "PENDING"
+  transformation_trace: "PENDING"
+  failure_behavior: "PENDING"
+  authority_constraints: "PENDING"
+
+rule: "No check may be marked PASS without an execution/test artifact."
+rule: "No contract may transition to VALIDATED from documentation alone."
