@@ -1,4 +1,4 @@
-schema_version: "M04.1"
+schema_version: "M04.3"
 registry_type: "integration-contract"
 
 lifecycle:
@@ -8,4 +8,99 @@ lifecycle:
   - ACTIVE
   - RETIRED
 
-contracts: []
+contracts:
+  - contract_id: "CON-KCN-KSIEI-ANALYZE-001"
+    lifecycle_state: "DRAFT"
+    provider_system: "SYS-KCN"
+    consumer_system: "SYS-KSI-EI"
+    capability: "CAP-KCN-INTELLIGENCE-ANALYZE"
+    version: "v1"
+    compatibility_state: "NOT_VALIDATED"
+
+    source_capability_reference:
+      architecture_repository: "Evank253/Super-intelligence-under-human-authority-"
+      capability_registry_revision: "80b5d0b5762d744846b240c634b5a5e1f75f3148"
+      provider_revision: "cf8ca49b872a9baaa7212caba28837f486d54062"
+
+    input_schema:
+      content_type: "application/json"
+      fields:
+        query:
+          type: "string"
+          required: true
+          constraints: "1..4096 characters"
+        context:
+          type: "object"
+          required: false
+        module:
+          type: "string"
+          required: false
+          allowed:
+            - "research"
+            - "reasoning"
+            - "planning"
+            - "creative"
+            - "engineering"
+            - "analysis"
+            - "learning"
+
+    output_schema:
+      content_type: "application/json"
+      fields:
+        id:
+          type: "string"
+        module:
+          type: "string"
+        status:
+          type: "string"
+        result:
+          type: "object|null"
+        created_at:
+          type: "string"
+
+    transport:
+      protocol: "HTTP REST"
+      method: "POST"
+      path: "/api/v1/intelligence/analyze"
+      base_url: "provider-deployment-specific"
+      authentication: "required; credential mechanism must be provisioned outside the contract"
+
+    provenance_requirements:
+      request_id: "must be retained by the integration layer"
+      provider_system_id: "SYS-KCN"
+      provider_revision: "must be recorded for every invocation"
+      capability_id: "CAP-KCN-INTELLIGENCE-ANALYZE"
+      contract_id: "CON-KCN-KSIEI-ANALYZE-001"
+      input_integrity: "hash or equivalent immutable request record required before experimental execution"
+      output_integrity: "raw provider response must be preserved before transformation"
+      transformation_trace: "any adapter transformation must be recorded"
+      evidence_status: "interaction is an observation; it is not evidence of emergent capability by itself"
+
+    authority_constraints:
+      human_authority: "remains ultimate"
+      system_authority: "bounded operational authority only"
+      contract_effect: "must not grant authority to provider or consumer"
+      experimental_effect: "must not promote an interaction to VERIFIED or QUALIFIED"
+
+    failure_behavior:
+      timeout: "return structured integration failure; preserve request provenance"
+      authentication_failure: "fail closed; no synthetic result"
+      schema_mismatch: "reject response; preserve raw response and mismatch details"
+      provider_error: "propagate structured error; do not convert failure into success"
+      provenance_failure: "reject interaction as experimental evidence input"
+      unknown_result: "fail closed"
+
+    validation_requirements:
+      - "Validate request against provider schema."
+      - "Validate response against provider response schema."
+      - "Verify provider identity and revision."
+      - "Verify provenance propagation."
+      - "Verify authentication boundary."
+      - "Verify failure behavior."
+      - "Run controlled integration test without treating the result as emergent intelligence."
+
+    notes:
+      - "This contract is DRAFT only."
+      - "No adapter or live connection is implied by this registry entry."
+      - "KSI-EI is the experimental consumer/context; its use of this contract does not establish that KCN capability is emergent."
+      - "ACTIVE requires validation and integration tests."
