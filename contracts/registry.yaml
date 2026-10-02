@@ -1,0 +1,11 @@
+schema_version: "M04.1"
+registry_type: "integration-contract"
+
+lifecycle:
+  - DRAFT
+  - VALIDATED
+  - TESTED
+  - ACTIVE
+  - RETIRED
+
+contracts: []
