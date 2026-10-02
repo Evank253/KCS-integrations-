@@ -1,0 +1,9 @@
+constitution_id: KSH-CONSTITUTION-001
+constitution_version: "1.0.0"
+constitution_status: FROZEN
+source_repository: Evank253/Super-intelligence-under-human-authority-
+source_ref: Python-3
+invariants: C-001..C-011
+integration_requirement: "No integration contract may grant, infer, or expand authority."
+governance_escalation: "Changes affecting authority, governance, constitutional constraints, authorization boundaries, evidence integrity, or provenance are governance events."
+evidence_rule: "Integration interactions are observations unless independently evaluated and qualified."
