@@ -1,0 +1,24 @@
+schema_version: "M04.1"
+type: "integration-contract"
+
+required:
+  - contract_id
+  - provider_system
+  - consumer_system
+  - capability
+  - input_schema
+  - output_schema
+  - provenance_requirements
+  - authority_constraints
+  - failure_behavior
+  - version
+
+properties:
+  contract_id:
+    pattern: "^CON-"
+  provider_system:
+    pattern: "^SYS-"
+  consumer_system:
+    pattern: "^SYS-"
+  capability:
+    pattern: "^CAP-"
