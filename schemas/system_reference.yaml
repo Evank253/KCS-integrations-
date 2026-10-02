@@ -1,0 +1,17 @@
+schema_version: "M04.1"
+type: "system-reference"
+
+required:
+  - system_id
+  - repository
+  - revision
+
+properties:
+  system_id:
+    pattern: "^SYS-"
+  repository:
+    type: "string"
+  revision:
+    type: "string"
+  evidence_state:
+    enum: ["DECLARED","IMPLEMENTED","OBSERVED","VERIFIED","QUALIFIED"]
